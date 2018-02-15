@@ -1,3 +1,7 @@
+function setScramble(doIt) {
+    doScramble = doIt;
+}
+
 $(function() {
     var getTextNodesIn = function() {
         return document.getElementById("doobie").innerText.split(" ");
@@ -26,6 +30,10 @@ $(function() {
     };
 
     function messUpWords() {
+        if (!doScramble) {
+            return;
+        }
+
         var node2 = [];
         for (var i = 0; i < textNodes.length; i++) {
             var node = textNodes[i];
