@@ -3,7 +3,7 @@ function effectNone() {
 }
 
 function effectSurface() {
-    $('#a11y_id_main').addClass('a11y_id_shakey');
+    $('#a11y_id_main').addClass('shakeyText');
 }
 
 function effectPhonological() {

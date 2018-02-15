@@ -28,8 +28,8 @@ function handleEffectClick(id) {
     $('#a11y_id_btn_effect_visual').removeClass('active');
     $('#a11y_id_btn_effect_dyscalculia').removeClass('active');
 
-    $('#a11y_id_main').removeClass('a11y_id_shakey');
-    
+    $('#a11y_id_main').removeClass('shakeyText');
+
     $('#'+id).addClass('active');
     addEffect(id);
 }
