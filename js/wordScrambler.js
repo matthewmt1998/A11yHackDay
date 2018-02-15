@@ -1,6 +1,6 @@
 $(function() {
     var getTextNodesIn = function() {
-        return document.getElementById("a11y_id_main").innerText;
+        return document.getElementById("doobie").innerText.split(" ");
     };
     // var textNodes = getTextNodesIn($("p, h1, h2, h3"));
     var textNodes = getTextNodesIn($("*"));
@@ -26,22 +26,22 @@ $(function() {
     };
 
     function messUpWords() {
-        var node2 = "";
+        var node2 = [];
         for (var i = 0; i < textNodes.length; i++) {
             var node = textNodes[i];
             for (var j = 0; j < wordsInTextNodes[i].length; j++) { // Only change a tenth of the words each round.
-                if (Math.random() > 1 / 10) {
-                    continue;
-                }
+                // if (Math.random() > 1 / 10) {
+                //     continue;
+                // }
                 var wordMeta = wordsInTextNodes[i][j];
-                var word = node.split(wordMeta.position, wordMeta.position + wordMeta.length);
-                var before = node.split(0, wordMeta.position);
-                var after = node.split(wordMeta.position + wordMeta.length);
+                var word = node.slice(wordMeta.position, wordMeta.position + wordMeta.length);
+                var before = node.slice(0, wordMeta.position);
+                var after = node.slice(wordMeta.position + wordMeta.length);
                 node.nodeValue = before + messUpWord(word) + after;
-                node2 = node2+(" "+node.nodeValue.toString());
+                node2.push(messUpWord(word));
             };
         };
-        document.getElementById("a11y_id_main").innerText = node2;
+        document.getElementById("doobie").innerText = node2;
     }
 
     function messUpWord(word) {
