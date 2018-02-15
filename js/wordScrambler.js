@@ -4,7 +4,7 @@ function setScramble(doIt) {
 
 $(function() {
     var getTextNodesIn = function() {
-        return document.getElementById("doobie").innerText.split(" ");
+        return document.getElementById("wordScramble").innerText.split(" ");
     };
     // var textNodes = getTextNodesIn($("p, h1, h2, h3"));
     var textNodes = getTextNodesIn($("*"));
@@ -51,7 +51,7 @@ $(function() {
         };
         var nodeToString = node2.toString();
         var nodeWithoutComma = nodeToString.replace(/,/g,' ');
-        document.getElementById("doobie").innerText = nodeWithoutComma;
+        document.getElementById("wordScramble").innerText = nodeWithoutComma;
     }
 
     function messUpWord(word) {

@@ -1,6 +1,7 @@
 var doScramble = true;
 
 function effectNone() {
+    location.reload();
     setScramble(false);
 }
 
@@ -11,7 +12,7 @@ function effectSurface() {
 
 function effectPhonological() {
     var x = document.createElement('script');
-    x.src = 'js/wordScrambler.js';
+    x.src = 'js/colourInvert.js';
     document.getElementsByTagName("head")[0].removeChild(x);
     setScramble(false);
 }
