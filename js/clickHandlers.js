@@ -30,7 +30,7 @@ function handleEffectClick(id) {
 
     $('#'+id).addClass('active');
 
-    addEffect(this.id);
+    addEffect(id);
 }
 
 function addEffect(id) {
