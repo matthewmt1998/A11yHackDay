@@ -1,8 +1,57 @@
-document.getElementById("a11y_id_btn_effect_none").addEventListener("click", effectNone);
-document.getElementById("a11y_id_btn_effect_surface").addEventListener("click", effectSurface);
-document.getElementById("a11y_id_btn_effect_phonological").addEventListener("click", effectPhonological);
-document.getElementById("a11y_id_btn_effect_visual").addEventListener("click", effectVisual);
-document.getElementById("a11y_id_btn_effect_dyscalculia").addEventListener("click", effectDyscalculia);
+$(document).ready(function() {
+
+    $('#a11y_id_btn_effect_none').click(function() {
+        handleEffectClick(this.id);
+    });
+
+    $('#a11y_id_btn_effect_surface').click(function() {
+        handleEffectClick(this.id);
+    });
+
+    $('#a11y_id_btn_effect_phonological').click(function() {
+        handleEffectClick(this.id);
+    });
+
+    $('#a11y_id_btn_effect_visual').click(function() {
+        handleEffectClick(this.id);
+    });
+
+    $('#a11y_id_btn_effect_dyscalculia').click(function() {
+        handleEffectClick(this.id);
+    });
+});
+
+function handleEffectClick(id) {
+    $('#a11y_id_btn_effect_none').removeClass('active');
+    $('#a11y_id_btn_effect_surface').removeClass('active');
+    $('#a11y_id_btn_effect_phonological').removeClass('active');
+    $('#a11y_id_btn_effect_visual').removeClass('active');
+    $('#a11y_id_btn_effect_dyscalculia').removeClass('active');
+
+    $('#'+id).addClass('active');
+
+    addEffect(this.id);
+}
+
+function addEffect(id) {
+    switch (id) {
+        case 'a11y_id_btn_effect_none':
+        effectNone();
+        break;
+        case 'a11y_id_btn_effect_surface':
+        effectSurface();
+        break;
+        case 'a11y_id_btn_effect_phonological':
+        effectPhonological();
+        break;
+        case 'a11y_id_btn_effect_visual':
+        effectVisual();
+        break;
+        case 'a11y_id_btn_effect_dyscalculia':
+        effectDyscalculia();
+        break;
+    }
+}
 
 function effectNone() {
     alert ("Hello World!");
