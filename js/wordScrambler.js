@@ -1,0 +1,69 @@
+$(function() {
+    var getTextNodesIn = function() {
+        return document.getElementById("a11y_id_main").innerText;
+    };
+    // var textNodes = getTextNodesIn($("p, h1, h2, h3"));
+    var textNodes = getTextNodesIn($("*"));
+
+    function isLetter(char) {
+        return /^[\d]$/.test(char);
+    }
+    var wordsInTextNodes = [];
+    for (var i = 0; i < textNodes.length; i++) {
+        var node = textNodes[i];
+        var words = []
+        var re = /\w+/g;
+        var match;
+        while ((match = re.exec(node.nodeValue)) != null) {
+            var word = match[0];
+            var position = match.index;
+            words.push({
+                length: word.length,
+                position: position
+            });
+        }
+        wordsInTextNodes[i] = words;
+    };
+
+    function messUpWords() {
+        var node2 = "";
+        for (var i = 0; i < textNodes.length; i++) {
+            var node = textNodes[i];
+            for (var j = 0; j < wordsInTextNodes[i].length; j++) { // Only change a tenth of the words each round.
+                if (Math.random() > 1 / 10) {
+                    continue;
+                }
+                var wordMeta = wordsInTextNodes[i][j];
+                var word = node.split(wordMeta.position, wordMeta.position + wordMeta.length);
+                var before = node.split(0, wordMeta.position);
+                var after = node.split(wordMeta.position + wordMeta.length);
+                node.nodeValue = before + messUpWord(word) + after;
+                node2 = node2+(" "+node.nodeValue.toString());
+            };
+        };
+        document.getElementById("a11y_id_main").innerText = node2;
+    }
+
+    function messUpWord(word) {
+        if (word.length < 3) {
+            return word;
+        }
+        return word[0] + messUpMessyPart(word.slice(1, -1)) + word[word.length - 1];
+    }
+
+    function messUpMessyPart(messyPart) {
+        if (messyPart.length < 2) {
+            return messyPart;
+        }
+        var a, b;
+        while (!(a < b)) {
+            a = getRandomInt(0, messyPart.length - 1);
+            b = getRandomInt(0, messyPart.length - 1);
+        }
+        return messyPart.slice(0, a) + messyPart[b] + messyPart.slice(a + 1, b) + messyPart[a] + messyPart.slice(b + 1);
+    } // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    setInterval(messUpWords, 50);
+});
