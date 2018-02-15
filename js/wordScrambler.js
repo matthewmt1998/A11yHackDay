@@ -41,7 +41,9 @@ $(function() {
                 node2.push(messUpWord(word));
             };
         };
-        document.getElementById("doobie").innerText = node2;
+        var nodeToString = node2.toString();
+        var nodeWithoutComma = nodeToString.replace(/,/g,' ');
+        document.getElementById("doobie").innerText = nodeWithoutComma;
     }
 
     function messUpWord(word) {

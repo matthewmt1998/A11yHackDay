@@ -29,7 +29,6 @@ function handleEffectClick(id) {
     $('#a11y_id_btn_effect_dyscalculia').removeClass('active');
 
     $('#'+id).addClass('active');
-
     addEffect(id);
 }
 
