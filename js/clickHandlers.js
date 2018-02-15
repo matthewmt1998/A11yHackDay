@@ -12,6 +12,9 @@ function effectNone() {
 function effectSurface() {
     alert ("Hello World!");
     effectVisualThing("a11y_id_btn_effect_surface");
+    var x = document.createElement('style')
+    x.src = 'css/shakeyStyle.css'
+    document.getElementsByTagName("a11y_id_main");
 }
 
 function effectPhonological() {
